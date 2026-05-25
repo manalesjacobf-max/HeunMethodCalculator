@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         META
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Interactive Improved Euler (Heun) Method Calculator using Flask and Numerical Methods">
+
+    <meta
+        name="keywords"
+        content="Heun Method, Improved Euler Method, Numerical Methods, Flask Calculator">
+
+    <meta
+        name="author"
+        content="Jacob F. Manales">
+
+    <title>
+        Improved Euler (Heun) Method
+    </title>
+
+
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =========================================
+         CSS
+    ========================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+
+    <!-- =========================================
+         MATHJAX CONFIGURATION
+    ========================================== -->
+
+    <script>
+
+        window.MathJax = {
+
+            tex: {
+
+                inlineMath: [
+                    ['$', '$'],
+                    ['\\(', '\\)']
+                ],
+
+                displayMath: [
+                    ['$$', '$$'],
+                    ['\\[', '\\]']
+                ]
+
+            },
+
+            svg: {
+
+                fontCache: 'global'
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- =========================================
+         MATHJAX SCRIPT
+    ========================================== -->
+
+    <<script id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head >
+
+<body>
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
+
+    <header class="hero">
+
+        <!-- =========================================
+             NAVBAR
+        ========================================== -->
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                Heun Method Solver
+
+            </div>
+
+
+            <div class="nav-links">
+
+    <a href="/" class="{% if request.path == '/' %}active{% endif %}">
+        Discussion
+    </a>
+
+    <a href="/examples" class="{% if request.path == '/examples' %}active{% endif %}">
+        Examples
+    </a>
+
+    <a href="/calculator" class="{% if request.path == '/calculator' %}active{% endif %}">
+        Calculator
+    </a>
+
+</div>
+
+        </nav>
+
+
+        <!-- =========================================
+             HERO CONTENT
+        ========================================== -->
+
+        <div class="hero-content">
+
+            <h1>
+
+                Improved Euler<br>
+                (Heun) Method
+
+            </h1>
+
+            <p>
+
+                Interactive Numerical Methods Learning
+                and Approximation Calculator System
+
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-container">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <p>
+
+            Numerical Methods Project •
+            Flask + Python •
+            2026
+
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

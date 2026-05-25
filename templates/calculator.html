@@ -1,0 +1,382 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- =========================================
+     PAGE INTRO
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        Interactive Heun Method Calculator
+    </h2>
+
+    <p>
+
+        Enter the differential equation and numerical parameters
+        below to approximate the solution using the
+        Improved Euler (Heun) Method.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================================
+     CALCULATOR LAYOUT
+========================================= -->
+
+<section class="calculator-layout">
+
+
+
+    <!-- =========================================
+         INPUT PANEL
+    ========================================== -->
+
+    <div class="card calculator-panel">
+
+        <h2>
+            Input Parameters
+        </h2>
+
+        <form method="POST">
+
+            <!-- Equation -->
+
+            <label>
+                Differential Equation
+            </label>
+
+            <input
+                type="text"
+                name="equation"
+                placeholder="Example: x + y"
+                required>
+
+
+
+            <!-- x0 -->
+
+            <label>
+                Initial x-value
+            </label>
+
+            <input
+                type="number"
+                step="any"
+                name="x0"
+                placeholder="0"
+                required>
+
+
+
+            <!-- y0 -->
+
+            <label>
+                Initial y-value
+            </label>
+
+            <input
+                type="number"
+                step="any"
+                name="y0"
+                placeholder="1"
+                required>
+
+
+
+            <!-- h -->
+
+            <label>
+                Step Size (h)
+            </label>
+
+            <input
+                type="number"
+                step="any"
+                name="h"
+                placeholder="0.1"
+                required>
+
+
+
+            <!-- steps -->
+
+            <label>
+                Number of Steps
+            </label>
+
+            <input
+                type="number"
+                name="steps"
+                placeholder="5"
+                required>
+
+
+
+            <!-- Button -->
+
+            <button type="submit" onclick="showLoader()">
+    Solve Using Heun Method
+            </button>
+
+<div id="loading" style="display:none;">
+    <div class="loader"></div>
+    <p style="text-align:center;">Computing solution...</p>
+</div>
+
+        </form> 
+
+        <div id="loading" style="display:none;">
+    <div class="loader"></div>
+    <p style="text-align:center;">Computing solution...</p>
+</div>
+
+        <!-- Error -->
+
+        {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+
+    <!-- =========================================
+         INFORMATION PANEL
+    ========================================== -->
+
+    <div class="card info-panel">
+
+        <h2>
+            Equation Guide
+        </h2>
+
+        <p>
+
+            Enter equations using standard Python-style syntax.
+
+        </p>
+
+        <div class="guide-box">
+
+            <h3>
+                Examples
+            </h3>
+
+            <ul>
+
+                <li>
+                    x + y
+                </li>
+
+                <li>
+                    y - x**2 + 1
+                </li>
+
+                <li>
+                    sin(x) + y
+                </li>
+
+                <li>
+                    x*y + 2
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="guide-box">
+
+            <h3>
+                Notes
+            </h3>
+
+            <ul>
+
+                <li>
+                    Use <strong>**</strong> for exponents
+                </li>
+
+                <li>
+                    Avoid invalid symbols
+                </li>
+
+                <li>
+                    Inputs are validated automatically
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     RESULTS SECTION
+========================================= -->
+
+{% if results %}
+
+<section class="card results-card">
+
+    <div class="results-header">
+
+        <h2>
+            Numerical Results
+        </h2>
+
+        <p>
+
+            Iterative approximations generated
+            using Heun’s Method.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- Results Table -->
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <<th>
+    Step
+</th>
+
+<th>
+    x₀
+</th>
+
+<th>
+    y₀
+</th>
+
+<th>
+    f₁
+</th>
+
+<th>
+    Predictor
+</th>
+
+<th>
+    f₂
+</th>
+
+<th>
+    x₁
+</th>
+
+<th>
+    Corrected
+</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for row in results %}
+
+                <tr>
+
+                    <td>
+    {{ row.step }}
+</td>
+
+<td>
+    {{ row.x0 }}
+</td>
+
+<td>
+    {{ row.y0 }}
+</td>
+
+<td>
+    {{ row.f1 }}
+</td>
+
+<td>
+    {{ row.predictor }}
+</td>
+
+<td>
+    {{ row.f2 }}
+</td>
+
+<td>
+    {{ row.x }}
+</td>
+
+<td>
+    {{ row.corrected }}
+</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+{% if graph %}
+
+<section class="card">
+
+    <h2>
+        Approximation Graph
+    </h2>
+
+    <p>
+
+        Visualization of the numerical approximation
+        generated using Heun’s Method.
+
+    </p>
+
+    <div class="graph-container">
+
+        <img
+            src="{{ url_for('static', filename='graphs/' + graph) }}"
+            alt="Heun Method Graph">
+
+    </div>
+
+</section>
+
+{% endif %}
+<script>
+function showLoader() {
+    document.getElementById("loading").style.display = "block";
+}
+</script>
+{% endblock %}

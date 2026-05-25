@@ -1,0 +1,360 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- =========================================
+     INTRODUCTION CARD
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        What is the Improved Euler Method?
+    </h2>
+
+    <p>
+
+        The Improved Euler Method, also known as
+        <strong>Heun’s Method</strong>,
+        is a numerical approximation technique used
+        for solving first-order ordinary differential equations.
+
+    </p>
+
+    <p>
+
+        It improves the accuracy of the standard Euler Method
+        by averaging two slope estimates:
+        the initial slope and the predicted slope.
+
+    </p>
+
+    <div class="math-box">
+
+        \[
+        \frac{dy}{dx} = f(x,y)
+        \]
+
+    </div>
+
+    <p>
+
+        Compared to the ordinary Euler Method,
+        Heun’s Method significantly reduces approximation error
+        and provides better stability for iterative computations.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================================
+     WHY IT WORKS
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        Core Idea Behind Heun’s Method
+    </h2>
+
+    <p>
+
+        The standard Euler Method only uses
+        the slope at the beginning of the interval.
+
+    </p>
+
+    <p>
+
+        Heun’s Method improves this by:
+
+    </p>
+
+    <ol>
+
+        <li>
+            Predicting the next value using Euler’s Method
+        </li>
+
+        <li>
+            Computing another slope at the predicted point
+        </li>
+
+        <li>
+            Averaging both slopes
+        </li>
+
+        <li>
+            Producing a more accurate corrected value
+        </li>
+
+    </ol>
+
+    <div class="math-box">
+
+        \[
+        y_p
+        =
+        y_n
+        +
+        h f(x_n,y_n)
+        \]
+
+    </div>
+
+    <div class="math-box">
+
+        \[
+        y_{n+1}
+        =
+        y_n
+        +
+        \frac{h}{2}
+        \left[
+        f(x_n,y_n)
+        +
+        f(x_{n+1}, y_p)
+        \right]
+        \]
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ALGORITHM SECTION
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        Step-by-Step Algorithm
+    </h2>
+
+    <p>
+
+        The Improved Euler Method follows the algorithm below:
+
+    </p>
+
+    <div class="algorithm-grid">
+
+        <div class="algorithm-step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Compute Initial Slope
+            </h3>
+
+            <p>
+
+                Evaluate the differential equation
+                using the current point.
+
+            </p>
+
+            <div class="math-box">
+
+                \[
+                f(x_n,y_n)
+                \]
+
+            </div>
+
+        </div>
+
+
+
+        <div class="algorithm-step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Predictor Step
+            </h3>
+
+            <p>
+
+                Estimate the next value using
+                Euler’s Method.
+
+            </p>
+
+            <div class="math-box">
+
+                \[
+                y_p
+                =
+                y_n
+                +
+                h f(x_n,y_n)
+                \]
+
+            </div>
+
+        </div>
+
+
+
+        <div class="algorithm-step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Compute Corrected Slope
+            </h3>
+
+            <p>
+
+                Evaluate the slope at the predicted point.
+
+            </p>
+
+            <div class="math-box">
+
+                \[
+                f(x_{n+1}, y_p)
+                \]
+
+            </div>
+
+        </div>
+
+
+
+        <div class="algorithm-step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>
+                Correct the Approximation
+            </h3>
+
+            <p>
+
+                Average both slopes to obtain
+                the corrected approximation.
+
+            </p>
+
+            <div class="math-box">
+
+                \[
+                y_{n+1}
+                =
+                y_n
+                +
+                \frac{h}{2}
+                \left[
+                f(x_n,y_n)
+                +
+                f(x_{n+1}, y_p)
+                \right]
+                \]
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ADVANTAGES
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        Advantages of Heun’s Method
+    </h2>
+
+    <div class="advantages-grid">
+
+        <div class="advantage-box">
+
+            <h3>
+                Higher Accuracy
+            </h3>
+
+            <p>
+
+                Produces more accurate approximations
+                than the ordinary Euler Method.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="advantage-box">
+
+            <h3>
+                Error Reduction
+            </h3>
+
+            <p>
+
+                Reduces truncation errors by averaging
+                two slope estimates.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="advantage-box">
+
+            <h3>
+                Simple Implementation
+            </h3>
+
+            <p>
+
+                Easy to implement computationally
+                using iterative procedures.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="advantage-box">
+
+            <h3>
+                Numerical Stability
+            </h3>
+
+            <p>
+
+                More stable than basic Euler approximations
+                for many ordinary differential equations.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,474 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- =========================================
+     PAGE TITLE
+========================================= -->
+
+<section class="card">
+
+    <h2>
+        Fully Worked Examples
+    </h2>
+
+    <p>
+
+        Below are complete step-by-step numerical solutions
+        using the Improved Euler (Heun) Method.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================================
+     EXAMPLE 1
+========================================= -->
+
+<section class="card example-card">
+
+    <div class="example-header">
+
+        <div class="example-number">
+
+            Example 1
+
+        </div>
+
+        <h2>
+
+            Solving
+            \( \frac{dy}{dx} = x + y \)
+
+        </h2>
+
+    </div>
+
+
+
+    <!-- Problem Statement -->
+
+    <div class="problem-box">
+
+        <h3>
+            Given
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            \frac{dy}{dx}=x+y
+            \]
+
+            \[
+            y(0)=1
+            \]
+
+            \[
+            h=0.1
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 1 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 1
+        </div>
+
+        <h3>
+            Compute Initial Slope
+        </h3>
+
+        <p>
+
+            Evaluate the differential equation
+            at the initial point.
+
+        </p>
+
+        <div class="math-box">
+
+            \[
+            f(x_0,y_0)
+            =
+            0+1
+            =
+            1
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 2 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 2
+        </div>
+
+        <h3>
+            Predictor Formula
+        </h3>
+
+        <p>
+
+            Use Euler’s Method to predict the next value.
+
+        </p>
+
+        <div class="math-box">
+
+            \[
+            y_p
+            =
+            y_n
+            +
+            h f(x_n,y_n)
+            \]
+
+            \[
+            y_p
+            =
+            1
+            +
+            0.1(1)
+            \]
+
+            \[
+            y_p
+            =
+            1.1
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 3 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 3
+        </div>
+
+        <h3>
+            Compute Corrected Slope
+        </h3>
+
+        <p>
+
+            Evaluate the function at the predicted point.
+
+        </p>
+
+        <div class="math-box">
+
+            \[
+            f(x_1,y_p)
+            =
+            0.1+1.1
+            =
+            1.2
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 4 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 4
+        </div>
+
+        <h3>
+            Apply Heun Corrector Formula
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            y_1
+            =
+            y_n
+            +
+            \frac{h}{2}
+            \left[
+            f(x_n,y_n)
+            +
+            f(x_{n+1},y_p)
+            \right]
+            \]
+
+            \[
+            y_1
+            =
+            1
+            +
+            \frac{0.1}{2}
+            (1+1.2)
+            \]
+
+            \[
+            y_1
+            =
+            1.11
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Final Answer -->
+
+    <div class="final-answer">
+
+        <h3>
+            Final Answer
+        </h3>
+
+        <div class="answer-box">
+
+            \[
+            \boxed{
+            y(0.1)=1.11
+            }
+            \]
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     EXAMPLE 2
+========================================= -->
+
+<section class="card example-card">
+
+    <div class="example-header">
+
+        <div class="example-number">
+
+            Example 2
+
+        </div>
+
+        <h2>
+
+            Solving
+            \( \frac{dy}{dx}=y-x^2+1 \)
+
+        </h2>
+
+    </div>
+
+
+
+    <!-- Problem Statement -->
+
+    <div class="problem-box">
+
+        <h3>
+            Given
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            \frac{dy}{dx}=y-x^2+1
+            \]
+
+            \[
+            y(0)=0.5
+            \]
+
+            \[
+            h=0.2
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 1 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 1
+        </div>
+
+        <h3>
+            Compute Initial Slope
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            f(0,0.5)
+            =
+            0.5-(0)^2+1
+            \]
+
+            \[
+            f(0,0.5)=1.5
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 2 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 2
+        </div>
+
+        <h3>
+            Predictor Formula
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            y_p
+            =
+            0.5
+            +
+            0.2(1.5)
+            \]
+
+            \[
+            y_p
+            =
+            0.8
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 3 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 3
+        </div>
+
+        <h3>
+            Compute Corrected Slope
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            f(0.2,0.8)
+            =
+            0.8-(0.2)^2+1
+            \]
+
+            \[
+            f(0.2,0.8)
+            =
+            1.76
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Step 4 -->
+
+    <div class="solution-step">
+
+        <div class="step-badge">
+            Step 4
+        </div>
+
+        <h3>
+            Apply Heun Corrector Formula
+        </h3>
+
+        <div class="math-box">
+
+            \[
+            y_1
+            =
+            0.5
+            +
+            \frac{0.2}{2}
+            (1.5+1.76)
+            \]
+
+            \[
+            y_1
+            =
+            0.826
+            \]
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Final Answer -->
+
+    <div class="final-answer">
+
+        <h3>
+            Final Answer
+        </h3>
+
+        <div class="answer-box">
+
+            \[
+            \boxed{
+            y(0.2)=0.826
+            }
+            \]
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
