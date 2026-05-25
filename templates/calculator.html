@@ -366,8 +366,9 @@
     <div class="graph-container">
 
         <img
-            src="{{ url_for('static', filename='graphs/' + graph) }}"
-            alt="Heun Method Graph">
+    src="data:image/png;base64,{{ graph }}"
+    alt="Heun Method Graph"
+    class="graph-image">
 
     </div>
 

@@ -43,11 +43,8 @@ def calculator():
 
             )
 
-            graph = generate_plot(
-                x_values,
-                y_values
-            )
-
+            graph = generate_plot(x_values, y_values)
+    
         except Exception as e:
 
             error = str(e)
